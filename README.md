@@ -1,4 +1,5 @@
 🚀 Senior Linux Administrator | Cloud Engineer | SRE | DevOps Engineer <BR>
+
 Hello! I'm [Your Name], and I transform complex infrastructure into resilient, scalable, and highly performant systems. With a passion for automation, cloud-native solutions, and building unbreakable pipelines, I thrive at the intersection of development and operations, ensuring maximum uptime and efficiency.
 
 My professional focus is on architecting and managing infrastructure that scales to meet enterprise demands, specializing in Linux systems, Kubernetes orchestration, and multi-cloud environments. I am actively seeking roles where I can leverage my expertise to drive meaningful DevOps and Site Reliability Engineering (SRE) initiatives.
