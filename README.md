@@ -62,6 +62,8 @@ Portfolio/Blog: [Link to your personal website or blog]
 
 </td></tr></table>
 
+## GitHub Trophies
+[![trophy](https://github-profile-trophy.vercel.app/?username=recarmona&theme=nord&column=7)](https://github.com/recarmona/github-profile-trophy)
 
 <div align="center">
 <img src="https://komarev.com/ghpvc/?username=recarmona&&style=flat-square" align="center" />
