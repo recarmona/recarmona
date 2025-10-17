@@ -50,5 +50,19 @@ Email: [Your Professional Email Address]
 
 Portfolio/Blog: [Link to your personal website or blog]
 
+## Github Stats
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=recarmona&layout=compact&hide=html,css,javascript,jupyter%20notebook,c%23,php&langs_count=10)](https://github.com/anuraghazra/github-readme-stats)
+<table><tr><td valign="top" width="50%">
+
+<img src="https://github-readme-stats.vercel.app/api?username=sagarkunwarc&show_icons=true&count_private=true&hide_border=true" align="left" style="width: 100%" />
+
+</td><td valign="top" width="50%">
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sagarkunwarc&hide_border=true&layout=compact" align="left" style="width: 100%" />
+
+</td></tr></table>
+
+
+<div align="center">
+<img src="https://komarev.com/ghpvc/?username=recarmona&&style=flat-square" align="center" />
+</div>  
