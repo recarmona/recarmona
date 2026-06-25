@@ -85,13 +85,30 @@
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: 12px; padding: 22px;
   }
-  .skill-card h3 { font-size: 1rem; margin-bottom: 14px; color: var(--text); }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag {
-    font-family: var(--mono); font-size: 0.8rem;
+  .skill-card h3 { font-size: 1rem; margin-bottom: 16px; color: var(--text); }
+  .icons { display: flex; flex-wrap: wrap; gap: 12px; }
+  .ico {
+    position: relative;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px;
     background: var(--bg-soft); border: 1px solid var(--border);
-    color: var(--text-dim); padding: 4px 10px; border-radius: 6px;
+    border-radius: 10px;
+    transition: transform 0.15s, border-color 0.15s;
   }
+  .ico img { height: 30px; width: auto; }
+  .ico:hover { transform: translateY(-4px); border-color: var(--accent); }
+  /* Tooltip on hover */
+  .ico::after {
+    content: attr(data-tip);
+    position: absolute; bottom: calc(100% + 8px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: #000; color: var(--text);
+    font-family: var(--mono); font-size: 0.72rem; white-space: nowrap;
+    padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border);
+    opacity: 0; pointer-events: none; transition: opacity 0.15s, transform 0.15s;
+    z-index: 5;
+  }
+  .ico:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   /* Projects */
   .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
@@ -174,36 +191,47 @@
     <div class="skills-grid">
       <div class="skill-card">
         <h3>☁️ Cloud &amp; Infrastructure as Code</h3>
-        <div class="tags">
-          <span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span>
-          <span class="tag">Terraform</span><span class="tag">SOPS</span>
+        <div class="icons">
+          <span class="ico" data-tip="AWS"><img src="https://profilinator.rishav.dev/skills-assets/amazonwebservices-original-wordmark.svg" alt="AWS" /></span>
+          <span class="ico" data-tip="Google Cloud"><img src="https://profilinator.rishav.dev/skills-assets/google_cloud-icon.svg" alt="GCP" /></span>
+          <span class="ico" data-tip="Azure"><img src="https://profilinator.rishav.dev/skills-assets/microsoft_azure-icon.svg" alt="Azure" /></span>
+          <span class="ico" data-tip="Terraform"><img src="https://profilinator.rishav.dev/skills-assets/terraformio-icon.svg" alt="Terraform" /></span>
         </div>
       </div>
       <div class="skill-card">
         <h3>🐳 Containers &amp; Orchestration</h3>
-        <div class="tags">
-          <span class="tag">Kubernetes</span><span class="tag">Docker</span>
+        <div class="icons">
+          <span class="ico" data-tip="Kubernetes"><img src="https://profilinator.rishav.dev/skills-assets/kubernetes-icon.svg" alt="Kubernetes" /></span>
+          <span class="ico" data-tip="Docker"><img src="https://profilinator.rishav.dev/skills-assets/docker-original-wordmark.svg" alt="Docker" /></span>
         </div>
       </div>
       <div class="skill-card">
         <h3>⚙️ CI/CD &amp; Automation</h3>
-        <div class="tags">
-          <span class="tag">Ansible</span><span class="tag">Jenkins</span>
-          <span class="tag">GitLab CI</span><span class="tag">Git</span><span class="tag">GitOps / Flux</span>
+        <div class="icons">
+          <span class="ico" data-tip="Ansible"><img src="https://profilinator.rishav.dev/skills-assets/ansible.png" alt="Ansible" /></span>
+          <span class="ico" data-tip="Jenkins"><img src="https://profilinator.rishav.dev/skills-assets/jenkins-icon.svg" alt="Jenkins" /></span>
+          <span class="ico" data-tip="GitLab CI"><img src="https://profilinator.rishav.dev/skills-assets/gitlab.svg" alt="GitLab" /></span>
+          <span class="ico" data-tip="Git"><img src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" /></span>
         </div>
       </div>
       <div class="skill-card">
         <h3>🐧 OS, Scripting &amp; Services</h3>
-        <div class="tags">
-          <span class="tag">Linux</span><span class="tag">Bash</span><span class="tag">PowerShell</span>
-          <span class="tag">Python</span><span class="tag">Nginx</span><span class="tag">Raspberry Pi</span>
+        <div class="icons">
+          <span class="ico" data-tip="Linux"><img src="https://profilinator.rishav.dev/skills-assets/linux-original.svg" alt="Linux" /></span>
+          <span class="ico" data-tip="Bash"><img src="https://profilinator.rishav.dev/skills-assets/gnu_bash-icon.svg" alt="Bash" /></span>
+          <span class="ico" data-tip="PowerShell"><img src="https://profilinator.rishav.dev/skills-assets/powershell.png" alt="PowerShell" /></span>
+          <span class="ico" data-tip="Python"><img src="https://profilinator.rishav.dev/skills-assets/python-original.svg" alt="Python" /></span>
+          <span class="ico" data-tip="Nginx"><img src="https://profilinator.rishav.dev/skills-assets/nginx-original.svg" alt="Nginx" /></span>
+          <span class="ico" data-tip="Raspberry Pi"><img src="https://profilinator.rishav.dev/skills-assets/raspberrypi.png" alt="Raspberry Pi" /></span>
         </div>
       </div>
       <div class="skill-card">
         <h3>📊 Observability &amp; Data</h3>
-        <div class="tags">
-          <span class="tag">Grafana</span><span class="tag">MySQL</span>
-          <span class="tag">MariaDB</span><span class="tag">WordPress</span>
+        <div class="icons">
+          <span class="ico" data-tip="Grafana"><img src="https://profilinator.rishav.dev/skills-assets/grafana.png" alt="Grafana" /></span>
+          <span class="ico" data-tip="MySQL"><img src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" /></span>
+          <span class="ico" data-tip="MariaDB"><img src="https://profilinator.rishav.dev/skills-assets/mariadb.png" alt="MariaDB" /></span>
+          <span class="ico" data-tip="WordPress"><img src="https://profilinator.rishav.dev/skills-assets/wordpress.png" alt="WordPress" /></span>
         </div>
       </div>
     </div>
