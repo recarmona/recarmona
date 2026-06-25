@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reinier Carmona · Cloud · SRE · DevOps</title>
+<meta name="description" content="Reinier Carmona — Senior Linux Administrator, Cloud Engineer, SRE and DevOps Engineer. Infrastructure as Code, Kubernetes, automation." />
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-soft: #161b22;
+    --bg-card: #11161d;
+    --border: #21262d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #2dd4bf;
+    --accent-2: #58a6ff;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { max-width: 100%; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 64px 0; border-top: 1px solid var(--border); }
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 .hash { color: var(--accent); font-family: var(--mono); font-weight: 700; }
+  .section-sub { color: var(--text-dim); margin-bottom: 32px; max-width: 70ch; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  nav .brand { font-family: var(--mono); font-weight: 700; color: var(--text); }
+  nav .brand span { color: var(--accent); }
+  nav .links { display: flex; gap: 20px; }
+  nav .links a { color: var(--text-dim); font-size: 0.9rem; }
+  nav .links a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 640px) { nav .links { display: none; } }
+
+  /* Hero */
+  .hero { padding: 80px 0 64px; border-top: none; text-align: center; }
+  .hero img.avatar {
+    width: 140px; height: 140px; border-radius: 50%;
+    border: 3px solid var(--accent); padding: 4px; background: var(--bg-soft);
+  }
+  .hero h1 { font-size: 2.4rem; margin: 24px 0 6px; }
+  .hero .role {
+    font-family: var(--mono); color: var(--accent);
+    font-size: 1rem; letter-spacing: 0.5px; margin-bottom: 20px;
+  }
+  .hero p.lead { color: var(--text-dim); max-width: 65ch; margin: 0 auto 28px; }
+  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+  }
+  .btn-primary { background: var(--accent); color: #06241f; }
+  .btn-primary:hover { background: #5eead4; text-decoration: none; }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); text-decoration: none; }
+
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .skill-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px;
+  }
+  .skill-card h3 { font-size: 1rem; margin-bottom: 14px; color: var(--text); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono); font-size: 0.8rem;
+    background: var(--bg-soft); border: 1px solid var(--border);
+    color: var(--text-dim); padding: 4px 10px; border-radius: 6px;
+  }
+
+  /* Projects */
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .proj-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px; display: flex; flex-direction: column;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .proj-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .proj-card .title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.05rem; }
+  .proj-card .title svg { flex: none; }
+  .proj-card .desc { color: var(--text-dim); font-size: 0.92rem; margin: 10px 0 16px; flex: 1; }
+  .proj-card .meta { display: flex; align-items: center; gap: 14px; font-size: 0.82rem; color: var(--text-dim); font-family: var(--mono); }
+  .lang-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+
+  /* Activity */
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 720px) { .stats-grid { grid-template-columns: 1fr; } }
+  .stats-grid img, .trophy img { width: 100%; border-radius: 10px; }
+  .trophy { margin-top: 18px; }
+
+  /* Contact */
+  .contact-list { display: flex; flex-direction: column; gap: 12px; max-width: 480px; }
+  .contact-row {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 18px;
+  }
+  .contact-row .label { color: var(--text-dim); font-family: var(--mono); font-size: 0.85rem; min-width: 90px; }
+
+  footer { text-align: center; padding: 40px 0; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border); }
+  footer .pv { margin-top: 14px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">recarmona<span>@cloud</span>:~$</div>
+    <div class="links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#activity">activity</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/38729607?v=4" alt="Reinier Carmona" />
+    <h1>Reinier Carmona</h1>
+    <div class="role">Senior Linux Administrator · Cloud Engineer · SRE · DevOps</div>
+    <p class="lead">I transform complex infrastructure into resilient, scalable, and highly performant systems — with a passion for automation, cloud-native solutions, and building unbreakable pipelines.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://github.com/recarmona" target="_blank" rel="noopener">View GitHub</a>
+      <a class="btn btn-ghost" href="#projects">See projects</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2><span class="hash">#</span> About</h2>
+    <p class="section-sub">
+      My professional focus is on architecting and managing infrastructure that scales to meet
+      enterprise demands, specializing in Linux systems, Kubernetes orchestration, and multi-cloud
+      environments. I thrive at the intersection of development and operations, ensuring maximum
+      uptime and efficiency. I'm actively seeking roles where I can drive meaningful DevOps and
+      Site Reliability Engineering (SRE) initiatives.
+    </p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2><span class="hash">#</span> Skills &amp; Stack</h2>
+    <p class="section-sub">The tools I use to build and operate reliable infrastructure.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>☁️ Cloud &amp; Infrastructure as Code</h3>
+        <div class="tags">
+          <span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span>
+          <span class="tag">Terraform</span><span class="tag">SOPS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>🐳 Containers &amp; Orchestration</h3>
+        <div class="tags">
+          <span class="tag">Kubernetes</span><span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>⚙️ CI/CD &amp; Automation</h3>
+        <div class="tags">
+          <span class="tag">Ansible</span><span class="tag">Jenkins</span>
+          <span class="tag">GitLab CI</span><span class="tag">Git</span><span class="tag">GitOps / Flux</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>🐧 OS, Scripting &amp; Services</h3>
+        <div class="tags">
+          <span class="tag">Linux</span><span class="tag">Bash</span><span class="tag">PowerShell</span>
+          <span class="tag">Python</span><span class="tag">Nginx</span><span class="tag">Raspberry Pi</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>📊 Observability &amp; Data</h3>
+        <div class="tags">
+          <span class="tag">Grafana</span><span class="tag">MySQL</span>
+          <span class="tag">MariaDB</span><span class="tag">WordPress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2><span class="hash">#</span> Featured Projects</h2>
+    <p class="section-sub">A selection of my Infrastructure as Code and automation work.</p>
+    <div class="proj-grid">
+
+      <a class="proj-card" href="https://github.com/recarmona/template-sops" target="_blank" rel="noopener">
+        <div class="title">📦 template-sops</div>
+        <div class="desc">Reusable template for secrets management with SOPS and Terraform — keep encrypted secrets safely in version control.</div>
+        <div class="meta"><span><span class="lang-dot" style="background:#844FBA"></span>HCL</span><span>★ 2</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/recarmona/bigbang-terraform" target="_blank" rel="noopener">
+        <div class="title">📦 bigbang-terraform</div>
+        <div class="desc">Terraform-driven AWS infrastructure provisioning — modular, repeatable cloud environments.</div>
+        <div class="meta"><span><span class="lang-dot" style="background:#844FBA"></span>HCL</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/recarmona/bigbang-terraform-ec2" target="_blank" rel="noopener">
+        <div class="title">📦 bigbang-terraform-ec2</div>
+        <div class="desc">EC2 provisioning on AWS with Terraform — automated compute infrastructure as code.</div>
+        <div class="meta"><span><span class="lang-dot" style="background:#844FBA"></span>HCL</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/recarmona/terraform-aws-ec2-linux" target="_blank" rel="noopener">
+        <div class="title">📦 terraform-aws-ec2-linux</div>
+        <div class="desc">Terraform module for deploying and configuring Linux EC2 instances on AWS.</div>
+        <div class="meta"><span><span class="lang-dot" style="background:#844FBA"></span>HCL</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/recarmona/terrraform_onboardvm" target="_blank" rel="noopener">
+        <div class="title">📦 terrraform_onboardvm</div>
+        <div class="desc">VM onboarding and provisioning automation with Terraform.</div>
+        <div class="meta"><span><span class="lang-dot" style="background:#844FBA"></span>HCL</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/recarmona/install-docker" target="_blank" rel="noopener">
+        <div class="title">📦 install-docker</div>
+        <div class="desc">Shell automation to install and configure Docker reliably across Linux hosts.</div>
+        <div class="meta"><span><span class="lang-dot" style="background:#89e051"></span>Shell</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/recarmona/bigbang" target="_blank" rel="noopener">
+        <div class="title">📦 bigbang</div>
+        <div class="desc">Bootstrap scripting for standing up infrastructure from scratch.</div>
+        <div class="meta"><span><span class="lang-dot" style="background:#89e051"></span>Shell</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/recarmona?tab=repositories" target="_blank" rel="noopener" style="justify-content:center;align-items:center;text-align:center;border-style:dashed;">
+        <div class="title">→ View all repositories</div>
+        <div class="desc" style="flex:none;margin-bottom:0;">Explore the rest of my work on GitHub.</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="activity">
+  <div class="wrap">
+    <h2><span class="hash">#</span> GitHub Activity</h2>
+    <p class="section-sub">My commit history and language usage reflect a strong focus on Infrastructure as Code, scripting, and automation.</p>
+    <div class="stats-grid">
+      <img src="https://github-readme-stats.vercel.app/api?username=recarmona&show_icons=true&count_private=true&hide_border=true&theme=tokyonight&bg_color=11161d&title_color=2dd4bf&icon_color=58a6ff&text_color=8b949e" alt="Reinier Carmona's GitHub stats" loading="lazy" />
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=recarmona&hide_border=true&layout=compact&theme=tokyonight&bg_color=11161d&title_color=2dd4bf&text_color=8b949e" alt="Top languages" loading="lazy" />
+    </div>
+    <div class="trophy">
+      <img src="https://github-profile-trophy.vercel.app/?username=recarmona&theme=nord&column=7&no-frame=true" alt="GitHub trophies" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2><span class="hash">#</span> Let's Connect</h2>
+    <p class="section-sub">Open to discussing new opportunities, collaboration, or insights on system architecture and SRE best practices.</p>
+    <div class="contact-list">
+      <div class="contact-row">
+        <span class="label">GitHub</span>
+        <a href="https://github.com/recarmona" target="_blank" rel="noopener">github.com/recarmona</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">LinkedIn</span>
+        <span style="color:var(--text-dim)">— add your LinkedIn URL —</span>
+      </div>
+      <div class="contact-row">
+        <span class="label">Email</span>
+        <span style="color:var(--text-dim)">— add your professional email —</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Reinier Carmona · Built with ❤️ and a love for clean infrastructure</div>
+    <div class="pv"><img src="https://komarev.com/ghpvc/?username=recarmona&style=flat-square&color=2dd4bf" alt="Profile views" /></div>
+  </div>
+</footer>
+
+</body>
+</html>
